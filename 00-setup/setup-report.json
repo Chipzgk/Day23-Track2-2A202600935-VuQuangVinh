@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-06-29T13:43:43.558552",
+  "services": [
+    "app",
+    "prometheus",
+    "grafana",
+    "alertmanager",
+    "jaeger",
+    "loki",
+    "otel-collector"
+  ],
+  "status": "ok"
+}

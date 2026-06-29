@@ -57,6 +57,7 @@ services:
       - "127.0.0.1:9093:9093"
     volumes:
       - ./02-prometheus-grafana/alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
+      - ./02-prometheus-grafana/alertmanager/slack_webhook_url.txt:/etc/alertmanager/slack_webhook_url.txt:ro
     environment:
       SLACK_WEBHOOK_URL: ${SLACK_WEBHOOK_URL:-https://hooks.slack.com/services/REPLACE/ME}
     networks: [obs]

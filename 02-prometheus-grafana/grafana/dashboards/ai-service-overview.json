@@ -6,7 +6,7 @@
   "refresh": "10s",
   "time": {"from": "now-15m", "to": "now"},
   "templating": {"list": [
-    {"name": "model", "type": "query", "datasource": {"type": "prometheus", "uid": "prometheus"},
+    {"name": "model", "type": "query", "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
      "query": "label_values(inference_requests_total, model)",
      "refresh": 2, "includeAll": true, "multi": false, "current": {"value": "$__all", "text": "All"}}
   ]},
@@ -14,7 +14,7 @@
     {
       "type": "timeseries", "title": "Request Rate (RPS) by status",
       "id": 1, "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [{
         "expr": "sum by (status) (rate(inference_requests_total{model=~\"$model\"}[1m]))",
         "legendFormat": "{{status}}", "refId": "A"
@@ -24,7 +24,7 @@
     {
       "type": "timeseries", "title": "Latency P50 / P95 / P99",
       "id": 2, "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [
         {"expr": "histogram_quantile(0.50, sum by (le) (rate(inference_latency_seconds_bucket{model=~\"$model\"}[5m])))", "legendFormat": "P50", "refId": "A"},
         {"expr": "histogram_quantile(0.95, sum by (le) (rate(inference_latency_seconds_bucket{model=~\"$model\"}[5m])))", "legendFormat": "P95", "refId": "B"},
@@ -35,7 +35,7 @@
     {
       "type": "stat", "title": "Error Rate (last 5m)",
       "id": 3, "gridPos": {"x": 0, "y": 8, "w": 6, "h": 6},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [{
         "expr": "100 * (sum(rate(inference_requests_total{status=\"error\"}[5m])) / sum(rate(inference_requests_total[5m])))",
         "refId": "A"
@@ -51,14 +51,14 @@
     {
       "type": "gauge", "title": "GPU Utilization",
       "id": 4, "gridPos": {"x": 6, "y": 8, "w": 6, "h": 6},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [{"expr": "gpu_utilization_percent", "refId": "A"}],
       "fieldConfig": {"defaults": {"unit": "percent", "min": 0, "max": 100}}
     },
     {
       "type": "timeseries", "title": "Token Throughput (in/out per sec)",
       "id": 5, "gridPos": {"x": 12, "y": 8, "w": 6, "h": 6},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [{
         "expr": "sum by (direction) (rate(inference_tokens_total{model=~\"$model\"}[1m]))",
         "legendFormat": "{{direction}}", "refId": "A"
@@ -68,7 +68,7 @@
     {
       "type": "stat", "title": "In-Flight Requests",
       "id": 6, "gridPos": {"x": 18, "y": 8, "w": 6, "h": 6},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [{"expr": "inference_active_gauge", "refId": "A"}],
       "fieldConfig": {"defaults": {"unit": "short"}}
     }

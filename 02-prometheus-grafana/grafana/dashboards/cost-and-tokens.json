@@ -9,7 +9,7 @@
     {
       "type": "timeseries", "title": "Token Throughput (in / out)",
       "id": 1, "gridPos": {"x": 0, "y": 0, "w": 12, "h": 8},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [{
         "expr": "sum by (direction) (rate(inference_tokens_total[1m]))",
         "legendFormat": "{{direction}}", "refId": "A"
@@ -19,7 +19,7 @@
     {
       "type": "stat", "title": "Estimated $/hr (input @ $0.5/M, output @ $2.0/M)",
       "id": 2, "gridPos": {"x": 12, "y": 0, "w": 12, "h": 8},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [{
         "expr": "3600 * (sum(rate(inference_tokens_total{direction=\"input\"}[5m])) * 0.0000005 + sum(rate(inference_tokens_total{direction=\"output\"}[5m])) * 0.000002)",
         "refId": "A"
@@ -35,7 +35,7 @@
     {
       "type": "timeseries", "title": "Eval Quality Score by model",
       "id": 3, "gridPos": {"x": 0, "y": 8, "w": 24, "h": 8},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [{
         "expr": "avg by (model) (inference_quality_score)",
         "legendFormat": "{{model}}", "refId": "A"

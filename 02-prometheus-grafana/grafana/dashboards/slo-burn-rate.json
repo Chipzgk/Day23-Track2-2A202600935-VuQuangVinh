@@ -9,7 +9,7 @@
     {
       "type": "stat", "title": "Error Budget Remaining (%)",
       "id": 1, "gridPos": {"x": 0, "y": 0, "w": 8, "h": 6},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [{
         "expr": "100 * (1 - (sum(increase(inference_requests_total{status=\"error\"}[30d])) / sum(increase(inference_requests_total[30d])) / 0.005))",
         "refId": "A"
@@ -25,7 +25,7 @@
     {
       "type": "timeseries", "title": "Burn Rate (multiple windows)",
       "id": 2, "gridPos": {"x": 8, "y": 0, "w": 16, "h": 6},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [
         {"expr": "inference:fail_ratio:rate5m  / 0.005", "legendFormat": "5m  burn", "refId": "A"},
         {"expr": "inference:fail_ratio:rate30m / 0.005", "legendFormat": "30m burn", "refId": "B"},
@@ -44,7 +44,7 @@
     {
       "type": "table", "title": "Active Alerts",
       "id": 3, "gridPos": {"x": 0, "y": 6, "w": 24, "h": 8},
-      "datasource": {"type": "prometheus", "uid": "prometheus"},
+      "datasource": {"type": "prometheus", "uid": "PBFA97CFB590B2093"},
       "targets": [{"expr": "ALERTS{alertstate=\"firing\"}", "refId": "A", "format": "table", "instant": true}]
     }
   ]

@@ -25,3 +25,4 @@ Thumbs.db
 # AgentOps bonus generated artifact (students create their own in submission/)
 agentops-report.json
 BONUS-agentops/agentops-report.json
+02-prometheus-grafana/alertmanager/slack_webhook_url.txt 
